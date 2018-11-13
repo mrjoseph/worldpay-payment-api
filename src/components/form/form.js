@@ -5,6 +5,7 @@ import './form.scss';
 class Form extends Component {
   constructor(props) {
     super(props);
+    this.handleChange = this.handleChange.bind(this);
     this.state = {
       cardCVC: null,
       cardExpiryMonth: null,
@@ -16,8 +17,8 @@ class Form extends Component {
   }
   handleSubmit = (e) => {
     e.preventDefault();
-  }
-  handleChange = (e) => {
+  };
+  handleChange (e) {
     const { value, name } = e.target;
     this.setState({ [name]: value})
 
@@ -33,37 +34,39 @@ class Form extends Component {
       cards,
     }
     } = this.props;
-    return (
-        <form role="form" onSubmit={this.handleSubmit}>
-          <div className="row">
-            <OptionSelect onChange={this.handleChange} cards={cards}/>
-            <div className="col-xs-6 col-md-6">
-              <Input {...cardNumber} onChange={this.handleChange}/>
+    if(this.props.content) {
+      return (
+          <form onSubmit={this.handleSubmit}>
+            <div className="row">
+              <OptionSelect onChange={this.handleChange} cards={cards}/>
+              <div className="col-xs-6 col-md-6 card-number">
+                <Input {...cardNumber} onChange={this.handleChange}/>
+              </div>
             </div>
-          </div>
-          <div className="row">
-            <div className="col-xs-6 col-md-6">
-              <Input {...cardHoldersName} onChange={this.handleChange} />
+            <div className="row">
+              <div className="col-xs-6 col-md-6">
+                <Input {...cardHoldersName} onChange={this.handleChange} />
+              </div>
+              <div className="col-xs-6 col-md-6 pull-right">
+                <Input {...cvc} onChange={this.handleChange} />
+              </div>
             </div>
-            <div className="col-xs-6 col-md-6 pull-right">
-              <Input {...cvc} onChange={this.handleChange} />
+            <div className="row">
+              <div className="col-6 col-md-3">
+                <Input {...cardExpiryMonth} onChange={this.handleChange} />
+              </div>
+              <div className="col-6 col-md-3">
+                <Input {...cardExpiryYear} onChange={this.handleChange} />
+              </div>
             </div>
-          </div>
-          <div className="row">
-            <div className="col-6 col-md-3">
-              <Input {...cardExpiryMonth} onChange={this.handleChange} />
+            <div className="row">
+              <div className="col-xs-6 col-md-6">
+                <input  className="subscribe btn btn-success btn-lg btn-block" type="submit" value={pay} />
+              </div>
             </div>
-            <div className="col-6 col-md-3">
-              <Input {...cardExpiryYear} onChange={this.handleChange} />
-            </div>
-          </div>
-          <div className="row">
-            <div className="col-xs-6 col-md-6">
-              <input  className="subscribe btn btn-success btn-lg btn-block" type="submit" value={pay} />
-            </div>
-          </div>
-        </form>
-    )
+          </form>
+      )
+    }
   }
 }
 
