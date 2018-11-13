@@ -1,16 +1,21 @@
 import React, { Component, Fragment } from 'react';
 
 class OptionSelect extends Component {
-  constructor(){
-    super();
+  constructor(props){
+    super(props);
+    const { cards } = this.props;
     this.state = {
-      value: ''
+      value: cards.visa
     }
   }
   handleChange = (event) => {
+    const { onChange } = this.props;
     this.setState({value: event.target.value});
+    onChange(event);
   };
   render(){
+    const { cards: { cardOption, name} } = this.props;
+    const { value } = this.state;
     return (
       <Fragment>
         <div className="col-8 col-md-4">
@@ -24,17 +29,19 @@ class OptionSelect extends Component {
                 className="custom-select"
                 id="inputGroupSelect01"
                 onChange={this.handleChange}
-                value={this.state.value}
+                value={value}
+                name={name}
             >
-              <option selected>visa...</option>
-              <option value="masterCard">master card</option>
-              <option value="amex">amex</option>
-              <option value="monzo">monzo</option>
+              {Object.keys(cardOption).map((val) => {
+                return (
+                    <option key={cardOption[val]} name={name} value={val}>{cardOption[val]}</option>
+                );
+              })}
             </select>
           </div>
         </div>
         <div className="col-4 col-md-2 flag">
-          <div>{this.state.value}</div>
+          <div>{value}</div>
         </div>
       </Fragment>
     );

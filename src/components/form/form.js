@@ -4,50 +4,62 @@ import OptionSelect from '../option-select/option-select';
 import './form.scss';
 class Form extends Component {
   constructor(props) {
-    super();
+    super(props);
     this.state = {
-      cards: {
-        visa: 'Visa',
-        masterCard: 'Master Card',
-        ammex: 'Ammex'
-      }
+      cardCVC: null,
+      cardExpiryMonth: null,
+      cardExpiryYear: null,
+      cardNumber: null,
+      cardHoldersName: null,
+      cards: null,
     }
   }
+  handleSubmit = (e) => {
+    e.preventDefault();
+  }
+  handleChange = (e) => {
+    const { value, name } = e.target;
+    this.setState({ [name]: value})
+
+  }
   render() {
-    const { cvc, cardExpiry, couponCode, pay, cardNumber, cardHoldersName } = this.props.content;
-    const { cards } = this.state;
+    const { content: {
+      cvc,
+      cardExpiryMonth,
+      cardExpiryYear,
+      pay,
+      cardNumber,
+      cardHoldersName,
+      cards,
+    }
+    } = this.props;
     return (
-        <form role="form" id="payment-form" method="POST" action="">
+        <form role="form" onSubmit={this.handleSubmit}>
           <div className="row">
-            <OptionSelect handleChange={this.handleChange} cards={cards}/>
+            <OptionSelect onChange={this.handleChange} cards={cards}/>
             <div className="col-xs-6 col-md-6">
-              <Input {...cardNumber} />
+              <Input {...cardNumber} onChange={this.handleChange}/>
             </div>
           </div>
           <div className="row">
             <div className="col-xs-6 col-md-6">
-              <Input {...cardHoldersName} />
+              <Input {...cardHoldersName} onChange={this.handleChange} />
             </div>
             <div className="col-xs-6 col-md-6 pull-right">
-              <Input {...cvc} />
+              <Input {...cvc} onChange={this.handleChange} />
+            </div>
+          </div>
+          <div className="row">
+            <div className="col-6 col-md-3">
+              <Input {...cardExpiryMonth} onChange={this.handleChange} />
+            </div>
+            <div className="col-6 col-md-3">
+              <Input {...cardExpiryYear} onChange={this.handleChange} />
             </div>
           </div>
           <div className="row">
             <div className="col-xs-6 col-md-6">
-              <Input {...cardExpiry} />
-            </div>
-          </div>
-          <div className="row">
-            <div className="col-xs-6 col-md-6">
-              <Input {...couponCode} />
-            </div>
-          </div>
-          <div className="row">
-            <div className="col-xs-6 col-md-6">
-              <button
-                  className="subscribe btn btn-success btn-lg btn-block"
-                  type="button">{pay}
-              </button>
+              <input  className="subscribe btn btn-success btn-lg btn-block" type="submit" value={pay} />
             </div>
           </div>
         </form>

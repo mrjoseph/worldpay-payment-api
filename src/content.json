@@ -12,12 +12,21 @@
       "required" : true,
       "label": "CV CODE"
     },
-    "cardExpiry": {
-      "label": "EXPIRATION EXP DATE",
-      "type": "tel",
+    "cardExpiryMonth": {
+      "label": "MONTH",
+      "type": "number",
       "className": "form-control",
-      "name": "cardExpiry",
-      "placeholder": "MM / YY",
+      "name": "cardExpiryMonth",
+      "placeholder": "MM",
+      "autoComplete": "cc-exp",
+      "required" : true
+    },
+    "cardExpiryYear": {
+      "label": "YEAR",
+      "type": "number",
+      "className": "form-control",
+      "name": "cardExpiryYear",
+      "placeholder": "YY",
       "autoComplete": "cc-exp",
       "required" : true
     },
@@ -29,7 +38,7 @@
     },
     "cardNumber": {
       "label": "CARD NUMBER",
-      "type": "tel",
+      "type": "number",
       "className": "form-control",
       "name": "cardNumber",
       "placeholder": "Valid Card Number",
@@ -44,6 +53,14 @@
       "placeholder": "Card holders name",
       "autoComplete": "ch-name",
       "required": "autoFocus"
+    },
+    "cards": {
+      "name": "cards",
+      "cardOption": {
+        "visa": "visa",
+        "masterCard": "Master card",
+        "americanExpress": "American Express"
+      }
     }
   }
 }
