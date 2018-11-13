@@ -1,0 +1,49 @@
+{
+  "orderConfirmationTitle": "Order confirmation",
+  "summary": "summary",
+  "formData" : {
+    "pay": "pay",
+    "cvc" : {
+      "type": "tel",
+      "className": "form-control",
+      "name": "cardCVC",
+      "placeholder": "CVC",
+      "autoComplete": "cc-csc",
+      "required" : true,
+      "label": "CV CODE"
+    },
+    "cardExpiry": {
+      "label": "EXPIRATION EXP DATE",
+      "type": "tel",
+      "className": "form-control",
+      "name": "cardExpiry",
+      "placeholder": "MM / YY",
+      "autoComplete": "cc-exp",
+      "required" : true
+    },
+    "couponCode": {
+      "type": "text" ,
+      "className": "form-control" ,
+      "name": "couponCode",
+      "label": "COUPON CODE"
+    },
+    "cardNumber": {
+      "label": "CARD NUMBER",
+      "type": "tel",
+      "className": "form-control",
+      "name": "cardNumber",
+      "placeholder": "Valid Card Number",
+      "autoComplete": "cc-number",
+      "required": "autoFocus"
+    },
+    "cardHoldersName": {
+      "label": "CARD HOLDERS NAME",
+      "type": "text",
+      "className": "form-control",
+      "name": "cardHoldersName",
+      "placeholder": "Card holders name",
+      "autoComplete": "ch-name",
+      "required": "autoFocus"
+    }
+  }
+}
