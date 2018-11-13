@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow, configure } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import fromTestData from './formTestData';
+import formTestData from './formTestData';
 import Form from './form';
 
 configure({ adapter: new Adapter() });
@@ -10,7 +10,7 @@ const spy = jest.spyOn(Form.prototype, 'handleChange');
 describe('<Form />', () => {
   let component;
   const formData = {
-    fromTestData,
+    formTestData,
   };
   beforeEach(() => {
     component = shallow(<Form content={formData} />);
