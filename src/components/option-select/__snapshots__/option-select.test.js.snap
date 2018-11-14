@@ -1,0 +1,68 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Option Select on select change Should render the input with props 1`] = `
+Array [
+  <div
+    className="col-8 col-md-4"
+  >
+    <span
+      className="card-selection"
+    >
+      SELECT A CARD
+    </span>
+    <div
+      className="input-group mb-3"
+    >
+      <div
+        className="input-group-prepend"
+      >
+        <label
+          className="input-group-text"
+          htmlFor="inputGroupSelect01"
+        >
+          Options
+        </label>
+      </div>
+      <select
+        className="custom-select"
+        id="inputGroupSelect01"
+        name="cards"
+        onChange={[Function]}
+        value=""
+      >
+        <option
+          name="cards"
+          value=""
+        >
+          Choose card
+        </option>
+        <option
+          name="cards"
+          value="visa"
+        >
+          visa
+        </option>
+        <option
+          name="cards"
+          value="masterCard"
+        >
+          Master card
+        </option>
+        <option
+          name="cards"
+          value="americanExpress"
+        >
+          American Express
+        </option>
+      </select>
+    </div>
+  </div>,
+  <div
+    className="col-4 col-md-2 flag"
+  >
+    <div
+      className="flags"
+    />
+  </div>,
+]
+`;

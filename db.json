@@ -1,9 +1,24 @@
 {
-  "posts": [
+  "payments": [
     {
-      "id": 1,
-      "title": "json-server",
-      "author": "typicode"
+      "_links": {
+        "resourceTree": {
+          "href": "https://access.worldpay.com/payments/resourceTree"
+        },
+        "payments:authorize": {
+          "href": "https://access.worldpay.com/payments/authorizations"
+        },
+        "payments:events": {
+          "href": "https://access.worldpay.com/payments/events"
+        },
+        "curies": [
+          {
+            "name": "payments",
+            "href": "https://access.worldpay.com/rels/payments/{rel}",
+            "templated": true
+          }
+        ]
+      }
     }
   ],
   "comments": [

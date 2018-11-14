@@ -1,17 +1,23 @@
 import React, { Component, Fragment } from 'react';
-
+import americanExpress from './images/americanExpress.png';
+import visa from './images/visa.png';
+import mastercard from './images/mastercard.png';
+ import './optionSelect.scss';
 class OptionSelect extends Component {
   constructor(props){
     super(props);
-    const { cards } = this.props;
+    this.handleChange = this.handleChange.bind(this);
+
     this.state = {
-      value: cards && cards.visa
+      value: ''
     }
   }
-  handleChange = (event) => {
+  handleChange(event) {
     const { onChange } = this.props;
-    this.setState({value: event.target.value});
-    onChange(event);
+    if (event){
+      this.setState({value: event.target.value});
+      onChange(event);
+    }
   };
   render(){
     if (this.props.cards) {
@@ -33,7 +39,10 @@ class OptionSelect extends Component {
                     value={value}
                     name={name}
                 >
-                  {Object.keys(cardOption).map((val) => {
+                  <option name={name} value="">Choose card</option>
+                  {
+                    Object.keys(cardOption).map((val) => {
+
                     return (
                         <option key={cardOption[val]} name={name} value={val}>{cardOption[val]}</option>
                     );
@@ -42,13 +51,21 @@ class OptionSelect extends Component {
               </div>
             </div>
             <div className="col-4 col-md-2 flag">
-              <div>{value}</div>
+              <div className="flags">
+              {value === 'americanExpress' && <img src={americanExpress} className="american-express" alt="American Express" />}
+              {value === 'visa' && <img src={visa} className="visa" alt="Visa" />}
+              {value === 'masterCard' && <img src={mastercard} className="masterCard" alt="Mastercard" />}
+              </div>
             </div>
           </Fragment>
       );
     }
     return null;
   }
+}
+
+OptionSelect.propTypes = {
+
 }
 
 export default OptionSelect;

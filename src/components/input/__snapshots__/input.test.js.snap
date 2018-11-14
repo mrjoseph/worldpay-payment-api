@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Input Should render the input with props 1`] = `
+<div
+  className="form-group"
+>
+  <label
+    htmlFor=""
+  >
+    
+  </label>
+  <input
+    autoComplete=""
+    className=""
+    name=""
+    onChange={[Function]}
+    placeholder=""
+    required=""
+    type=""
+  />
+</div>
+`;

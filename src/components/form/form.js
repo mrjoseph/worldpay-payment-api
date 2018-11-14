@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Input from '../input';
+import Input from '../input/input';
 import OptionSelect from '../option-select/option-select';
 import './form.scss';
 class Form extends Component {

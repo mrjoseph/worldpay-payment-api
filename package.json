@@ -13,9 +13,7 @@
     "sinon": "^7.1.1"
   },
   "scripts": {
-    "start-client": "react-scripts start",
-    "start": "npm-run-all -p start-server start-client",
-    "start-server": "json-server --watch db.json --port 3001",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -32,7 +30,8 @@
   "devDependencies": {
     "enzyme": "^3.7.0",
     "enzyme-adapter-react-16": "^1.7.0",
-    "enzyme-to-json": "^3.3.4"
+    "enzyme-to-json": "^3.3.4",
+    "react-test-renderer": "^16.6.0"
   },
   "jest": {
     "snapshotSerializers": [

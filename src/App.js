@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
-import Header from './components/header';
+import Header from './components/header/header';
 import OrderConfirmation from './views/order-confirmation/order-confirmation'
 
 import './App.css';
