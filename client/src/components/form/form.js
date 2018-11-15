@@ -6,6 +6,7 @@ class Form extends Component {
   constructor(props) {
     super(props);
     this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
     this.state = {
       cardCVC: null,
       cardExpiryMonth: null,
@@ -15,8 +16,22 @@ class Form extends Component {
       cards: null,
     }
   }
-  handleSubmit = (e) => {
+  handleSubmit(e) {
     e.preventDefault();
+    const {
+      paymentLinks: {
+        data: {
+          _links:
+          {
+            'payments:authorize': {
+            href
+          }
+          }
+        }
+      }
+    } = this.props;
+    console.log(href);
+
   };
   handleChange (e) {
     const { value, name } = e.target;
@@ -61,7 +76,7 @@ class Form extends Component {
             </div>
             <div className="row">
               <div className="col-xs-6 col-md-6">
-                <input  className="subscribe btn btn-success btn-lg btn-block" type="submit" value={pay} />
+                <input  className="subscribe btn btn-success btn-lg btn-block" type="submit" value={pay} onSubmit={this.handleSubmit}/>
               </div>
             </div>
           </form>

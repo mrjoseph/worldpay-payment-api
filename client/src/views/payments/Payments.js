@@ -1,9 +1,13 @@
 import React, { Component, Fragment } from 'react';
+import { connect } from 'react-redux';
 import Form from '../../components/form/form';
-
-class OrderConfirmation extends Component {
+import getPaymentLinks from '../../redux/actions/getPaymentLinks/getPaymentLinksAction';
+export class Payments extends Component {
+  componentDidMount () {
+    this.props.getPaymentLinks();
+  }
   render() {
-    const { content: { formData} } = this.props;
+    const { content: { formData},paymentLinks } = this.props;
     return (
         <Fragment>
           <div className="row">
@@ -29,11 +33,18 @@ class OrderConfirmation extends Component {
           </div>
 
           <div className="panel-body">
-            <Form content={formData}/>
+            <Form content={formData} paymentLinks={paymentLinks} />
           </div>
         </Fragment>
     );
   }
 }
 
-export default OrderConfirmation;
+const mapStateToProps = (state) => {
+  console.log(state);
+  return {
+    paymentLinks: state.paymentsReducer.paymentLinks,
+  }
+};
+// export default Payments;
+export default connect(mapStateToProps,{getPaymentLinks})(Payments);

@@ -1,6 +1,7 @@
 {
-  "orderConfirmationTitle": "Order confirmation",
-  "summary": "summary",
+  "checkout": "Checkout",
+  "payment": "Payment",
+  "summary": "Summary",
   "formData" : {
     "pay": "pay",
     "cvc" : {
