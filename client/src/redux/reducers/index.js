@@ -8,7 +8,7 @@ const routeReducer = combineReducers({
   router: routerReducer,
   paymentsReducer,
   authorized: authorizePaymentReducer,
-  authorizedOption: settlePaymentReducer,
+  settled: settlePaymentReducer,
 
 });
 

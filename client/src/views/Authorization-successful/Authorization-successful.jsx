@@ -10,20 +10,12 @@ class AuthorizationSuccessful extends Component {
   }
 
   handleSettlePayment() {
-    const {
-      settlePayment, authorized: {
-        _links: {
-          'payments:settle': {
-            href,
-          },
-        },
-      },
-    } = this.props;
-
-    settlePayment(href);
+    const { settlePayment, settledLinks, authorized: { settle } } = this.props;
+      if (settle) settlePayment(settle);
   }
 
   render() {
+    const { settledLinks: { refund } } = this.props;
     return (
       <div className="summary-view">
         <div className="alert alert-success" role="alert">
@@ -33,7 +25,15 @@ class AuthorizationSuccessful extends Component {
             Your authorization was successful. Please pick one of the options
           below to continue
         </p>
-        <AuthorizedOptions handleSettlePayment={this.handleSettlePayment} />
+        <div>
+          <h3>Authorization options</h3>
+          <AuthorizedOptions handleSettlePayment={this.handleSettlePayment} />
+        </div>
+        {refund && <div className="settled-payment-options">
+          <h3>Refund options</h3>
+          <button type="button" className="btn btn-primary">Refund</button>
+          <button type="button" className="btn btn-secondary">Partial refund</button>
+        </div>}
       </div>
     );
   }

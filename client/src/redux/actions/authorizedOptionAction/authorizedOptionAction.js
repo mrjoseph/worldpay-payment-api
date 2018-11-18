@@ -1,6 +1,6 @@
 export const CANCEL_PAYMENT = 'CANCEL_PAYMENT';
-export const SETTLE_PAYMENT = 'SETTLE_PAYMENT';
-export const PARTIAL_SETTLE_PAYMENT = 'PARTIAL_SETTLE_PAYMENT';
+export const AUTHORIZED_OPTION_SETTLE_PAYMENT = 'AUTHORIZED_OPTION_SETTLE_PAYMENT';
+export const PARTIAL_AUTHORIZED_OPTION_SETTLE_PAYMENT = 'PARTIAL_AUTHORIZED_OPTION_SETTLE_PAYMENT';
 export const QUERY_PAYMENT = 'QUERY_PAYMENT';
 
 export const fetchData = (uri, body, action) => ({
@@ -16,7 +16,7 @@ export const fetchData = (uri, body, action) => ({
 });
 
 export const settlePayment = (uri, body) => (dispatch) => {
-  dispatch(fetchData(uri, body, SETTLE_PAYMENT));
+  dispatch(fetchData(uri, body, AUTHORIZED_OPTION_SETTLE_PAYMENT));
 };
 
 export const cancelPayment = () => {};

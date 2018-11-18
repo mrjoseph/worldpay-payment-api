@@ -1,69 +1,72 @@
-import authorizePaymentReducer from './authorizedOption';
-import { AUTHORIZE_PAYMENT } from '../../actions/postAuthorizePayment/postAuthorizePayment';
+import settlePaymentReducer from './authorizedOption';
+import { AUTHORIZED_OPTION_SETTLE_PAYMENT } from '../../actions/authorizedOptionAction/authorizedOptionAction';
 
 const INITIAL_STATE = {};
-
-describe.skip('Authorized payment reducer', () => {
-  it('Should return initial state', () => {
-    expect(authorizePaymentReducer(undefined)).toEqual(INITIAL_STATE);
+describe('Authorized options', () => {
+  describe('settlePaymentReducer', () => {
+    it('should return initial state', () => {
+      expect(settlePaymentReducer(undefined)).toEqual(INITIAL_STATE);
+    });
   });
-
-  it('Should return GET_PAYMENT_LINKS with SUCCESS', () => {
+  it('should return AUTHORIZED_OPTION_SETTLE_PAYMENT with (SUCCESS)', () => {
     const ACTION = {
-      type: `${AUTHORIZE_PAYMENT}.SUCCESS`,
+      type: `${AUTHORIZED_OPTION_SETTLE_PAYMENT}.SUCCESS`,
       result: {
-        outcome: 'authorized',
         _links: {
-          'payments:cancel': {
-            href: 'https://access.worldpay.com/payments/authorizations/cancellations/eyJrIjoiazNhYjYzMiJ9',
+          'payments:refund': {
+            href: 'http://localhost:2000/api/payments/settlements/refunds/full/eyJrIjoiazNhYjYzMiJ9',
           },
-          'payments:settle': {
-            href: 'https://access.worldpay.com/payments/settlements/full/eyJrIjoiazNhYjYzMiJ9',
-          },
-          'payments:partialSettle': {
-            href: 'https://access.worldpay.com/payments/settlements/partials/eyJrIjoiazNhYjYzMiJ9',
+          'payments:partialRefund': {
+            href: 'http://localhost:2000/api/payments/settlements/refunds/partials/eyJrIjoiazNhYjYzMiJ9',
           },
           'payments:events': {
-            href: 'https://access.worldpay.com/payments/events/eyJrIjoiazNhYjYzMiJ9',
+            href: 'http://localhost:2000/api/payments/events/eyJrIjoiazNhYjYzMiJ9',
           },
           curies: [
             {
               name: 'payments',
-              href: 'https://access.worldpay.com/rels/payments/{rel}',
+              href: 'http://localhost:2000/api/rels/payments/{rel}',
               templated: true,
             },
           ],
         },
       },
     };
-
     const stateAfter = {
       authorized: {
-        outcome: 'authorized',
         _links: {
-          'payments:cancel': {
-            href: 'https://access.worldpay.com/payments/authorizations/cancellations/eyJrIjoiazNhYjYzMiJ9',
+          curies: [{ href: 'http://localhost:2000/api/rels/payments/{rel}', name: 'payments', templated: true }], 'payments:events': { href: 'http://localhost:2000/api/payments/events/eyJrIjoiazNhYjYzMiJ9' }, 'payments:partialRefund': { href: 'http://localhost:2000/api/payments/settlements/refunds/partials/eyJrIjoiazNhYjYzMiJ9' }, 'payments:refund': { href: 'http://localhost:2000/api/payments/settlements/refunds/full/eyJrIjoiazNhYjYzMiJ9' },
+        },
+      },
+    };
+    expect(settlePaymentReducer(INITIAL_STATE, ACTION)).toEqual(stateAfter);
+  });
+
+  it('should return AUTHORIZED_OPTION_SETTLE_PAYMENT with (FAILED)', () => {
+    const ACTION = {
+      type: `${AUTHORIZED_OPTION_SETTLE_PAYMENT}.FAILED`,
+      result: {
+        _links: {
+          'payments:refund': {
+            href: 'http://localhost:2000/api/payments/settlements/refunds/full/eyJrIjoiazNhYjYzMiJ9',
           },
-          'payments:settle': {
-            href: 'https://access.worldpay.com/payments/settlements/full/eyJrIjoiazNhYjYzMiJ9',
-          },
-          'payments:partialSettle': {
-            href: 'https://access.worldpay.com/payments/settlements/partials/eyJrIjoiazNhYjYzMiJ9',
+          'payments:partialRefund': {
+            href: 'http://localhost:2000/api/payments/settlements/refunds/partials/eyJrIjoiazNhYjYzMiJ9',
           },
           'payments:events': {
-            href: 'https://access.worldpay.com/payments/events/eyJrIjoiazNhYjYzMiJ9',
+            href: 'http://localhost:2000/api/payments/events/eyJrIjoiazNhYjYzMiJ9',
           },
           curies: [
             {
               name: 'payments',
-              href: 'https://access.worldpay.com/rels/payments/{rel}',
+              href: 'http://localhost:2000/api/rels/payments/{rel}',
               templated: true,
             },
           ],
         },
       },
     };
-
-    expect(authorizePaymentReducer(INITIAL_STATE, ACTION)).toEqual(stateAfter);
+    const stateAfter = { undefined };
+    expect(settlePaymentReducer(INITIAL_STATE, ACTION)).toEqual(stateAfter);
   });
 });

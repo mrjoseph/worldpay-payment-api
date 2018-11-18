@@ -16,18 +16,18 @@ describe('GetPaymentLinksAction', () => {
     data: {
       _links: {
         resourceTree: {
-          href: 'https://access.worldpay.com/payments/resourceTree',
+          href: 'http://localhost:2000/api/payments/resourceTree',
         },
         'payments:authorize': {
-          href: 'https://access.worldpay.com/payments/authorizations',
+          href: 'http://localhost:2000/api/payments/authorizations',
         },
         'payments:events': {
-          href: 'https://access.worldpay.com/payments/events',
+          href: 'http://localhost:2000/api/payments/events',
         },
         curies: [
           {
             name: 'payments',
-            href: 'https://access.worldpay.com/rels/payments/{rel}',
+            href: 'http://localhost:2000/api/rels/payments/{rel}',
             templated: true,
           },
         ],
