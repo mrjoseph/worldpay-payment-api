@@ -72,18 +72,18 @@ app.post('/api/payments/settlements/full/eyJrIjoiazNhYjYzMiJ9', (req, res) => {
   res.status(201).send({
     "_links": {
       "payments:refund": {
-        "href": "https://access.worldpay.com/payments/settlements/refunds/full/eyJrIjoiazNhYjYzMiJ9"
+        "href": "http://localhost:2000/api/payments/settlements/refunds/full/eyJrIjoiazNhYjYzMiJ9"
       },
       "payments:partialRefund": {
-        "href": "https://access.worldpay.com/payments/settlements/refunds/partials/eyJrIjoiazNhYjYzMiJ9"
+        "href": "http://localhost:2000/api/payments/settlements/refunds/partials/eyJrIjoiazNhYjYzMiJ9"
       },
       "payments:events": {
-        "href": "https://access.worldpay.com/payments/events/eyJrIjoiazNhYjYzMiJ9"
+        "href": "http://localhost:2000/api/payments/events/eyJrIjoiazNhYjYzMiJ9"
       },
       "curies": [
         {
           "name": "payments",
-          "href": "https://access.worldpay.com/rels/payments/{rel}",
+          "href": "http://localhost:2000/api/rels/payments/{rel}",
           "templated": true
         }
       ]

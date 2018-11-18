@@ -1,3 +1,17 @@
+# World Pay Api test
+
+## TODOs
+### Unit tests
+1. Api function
+1. Add JWT to protect routes
+1. Add a nice fade out of the authorization message after 10 seconds
+
+## Questions
+1. Where is the payment status stored?
+
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
