@@ -1,17 +1,20 @@
 {
-  "checkout": "Checkout",
-  "payment": "Payment",
-  "summary": "Summary",
+  "breadcrumb":{
+    "checkout": "Checkout",
+    "payment": "Payments",
+    "authorized": "Authorized"
+  },
   "formData" : {
-    "pay": "pay",
-    "cvc" : {
+    "pay": "Make payment",
+    "cardCVC" : {
       "type": "tel",
       "className": "form-control",
       "name": "cardCVC",
       "placeholder": "CVC",
       "autoComplete": "cc-csc",
       "required" : true,
-      "label": "CV CODE"
+      "label": "CV CODE",
+      "value": "123"
     },
     "cardExpiryMonth": {
       "label": "MONTH",
@@ -20,7 +23,8 @@
       "name": "cardExpiryMonth",
       "placeholder": "MM",
       "autoComplete": "cc-exp",
-      "required" : true
+      "required" : true,
+      "value": "05"
     },
     "cardExpiryYear": {
       "label": "YEAR",
@@ -29,7 +33,8 @@
       "name": "cardExpiryYear",
       "placeholder": "YY",
       "autoComplete": "cc-exp",
-      "required" : true
+      "required" : true,
+      "value": "1980"
     },
     "couponCode": {
       "type": "text" ,
@@ -44,7 +49,8 @@
       "name": "cardNumber",
       "placeholder": "Valid Card Number",
       "autoComplete": "cc-number",
-      "required": "autoFocus"
+      "required": "autoFocus",
+      "value": "1234123412341234"
     },
     "cardHoldersName": {
       "label": "CARD HOLDERS NAME",
@@ -53,7 +59,8 @@
       "name": "cardHoldersName",
       "placeholder": "Card holders name",
       "autoComplete": "ch-name",
-      "required": "autoFocus"
+      "required": "autoFocus",
+      "value": "Tony Stark"
     },
     "cards": {
       "name": "cards",

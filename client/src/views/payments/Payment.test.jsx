@@ -1,15 +1,15 @@
 import React from 'react';
 import { shallow, configure } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import { Payments } from './Payments';
+import Payments from './Payments';
 
 configure({ adapter: new Adapter() });
 
 describe('Payments view', () => {
-  let getPaymentLinksSpy = jest.fn();
+  const getPaymentLinksSpy = jest.fn();
   const props = {
     getPaymentLinks: getPaymentLinksSpy,
-    content: { formData: {} }
+    content: { formData: {} },
   };
 
   beforeAll(() => {

@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header Should render the checkout view without props 1`] = `
+<div>
+  <a
+    href="/payment"
+    onClick={[Function]}
+  >
+    Proceed to checkout
+  </a>
+</div>
+`;

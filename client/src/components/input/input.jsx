@@ -2,7 +2,17 @@ import React, { Component } from 'react';
 
 class Input extends Component {
   render() {
-    const { type, className, name, placeholder, autoComplete, required, label, onChange } = this.props;
+    const {
+      type,
+      className,
+      name,
+      placeholder,
+      autoComplete,
+      required,
+      label,
+      onChange,
+      value
+    } = this.props;
     return (
         <div className="form-group">
           <label htmlFor={name}>{label}</label>
@@ -14,6 +24,7 @@ class Input extends Component {
               autoComplete={autoComplete}
               required={required}
               onChange={onChange}
+              value={value}
           />
         </div>
     );

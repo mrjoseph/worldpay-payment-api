@@ -12,31 +12,31 @@ const store = mockStore({});
 
 describe('GetPaymentLinksAction', () => {
   let path;
-  let fetchPayload = {
+  const expectedPayload = {
     data: {
-      "_links": {
-        "resourceTree": {
-          "href": "https://access.worldpay.com/payments/resourceTree"
+      _links: {
+        resourceTree: {
+          href: 'https://access.worldpay.com/payments/resourceTree',
         },
-        "payments:authorize": {
-          "href": "https://access.worldpay.com/payments/authorizations"
+        'payments:authorize': {
+          href: 'https://access.worldpay.com/payments/authorizations',
         },
-        "payments:events": {
-          "href": "https://access.worldpay.com/payments/events"
+        'payments:events': {
+          href: 'https://access.worldpay.com/payments/events',
         },
-        "curies": [
+        curies: [
           {
-            "name": "payments",
-            "href": "https://access.worldpay.com/rels/payments/{rel}",
-            "templated": true
-          }
-        ]
-      }
-    }
+            name: 'payments',
+            href: 'https://access.worldpay.com/rels/payments/{rel}',
+            templated: true,
+          },
+        ],
+      },
+    },
   };
 
   beforeEach(() => {
-    path = 'http://localhost:2000/api/payments/'
+    path = 'http://localhost:2000/api/payments/';
   });
 
   afterEach(() => {
@@ -44,16 +44,35 @@ describe('GetPaymentLinksAction', () => {
     fetchMock.restore();
   });
 
-  it('Should return action type GET_PAYMENT_LINKS (LOADING AND SUCCESS)', async () => {
-        fetchMock.get(path, { status: 201, body: fetchPayload });
-        await store.dispatch(getPaymentLinks());
-        const expected = [
-          { type: `${GET_PAYMENT_LINKS }.LOADING` }, {
-            type: `${GET_PAYMENT_LINKS }.SUCCESS`,
-            result: fetchPayload,
-          }];
-        const actions = await store.getActions();
-        expect(actions).toEqual(expected);
-      });
-});
 
+  describe('When a request to the correct endpoint is made', () => {
+    it('Should return action type GET_PAYMENT_LINKS (LOADING AND SUCCESS)', async () => {
+      fetchMock.get(path, { status: 201, body: expectedPayload });
+      await store.dispatch(getPaymentLinks());
+      const expected = [
+        { type: `${GET_PAYMENT_LINKS}.LOADING` }, {
+          type: `${GET_PAYMENT_LINKS}.SUCCESS`,
+          result: expectedPayload,
+        }];
+      const actions = await store.getActions();
+      expect(actions).toEqual(expected);
+    });
+  });
+
+  describe('When a request to the incorrect endpoint is made eg: url is wrong', () => {
+    it('Should return action type GET_PAYMENT_LINKS (LOADING AND FAILED)', async () => {
+      const errorExpectedPayload = {
+        error: 'Sorry can\'t find that!',
+      };
+      fetchMock.get(path, { status: 404, body: errorExpectedPayload });
+      await store.dispatch(getPaymentLinks());
+      const expected = [
+        { type: `${GET_PAYMENT_LINKS}.LOADING` }, {
+          type: `${GET_PAYMENT_LINKS}.FAILED`,
+          error: { ...errorExpectedPayload },
+        }];
+      const actions = await store.getActions();
+      expect(actions).toEqual(expected);
+    });
+  });
+});

@@ -32,12 +32,6 @@ Array [
       >
         <option
           name="cards"
-          value=""
-        >
-          Choose card
-        </option>
-        <option
-          name="cards"
           value="visa"
         >
           visa

@@ -1,9 +1,7 @@
 const express = require('express');
 const app = express();
 const cors = require('cors');
-const jwt = require('jsonwebtoken');
 var bodyParser = require('body-parser');
-const _ = require('lodash');
 app.use( bodyParser.json() );
 app.use(bodyParser.urlencoded({
   extended: true
@@ -13,30 +11,91 @@ app.use(cors());
 const payments = {
   "_links": {
     "resourceTree": {
-      "href": "https://localhost:2000/payments/resourceTree"
+      "href": "http://localhost:2000/api/payments/resourceTree"
     },
     "payments:authorize": {
-      "href": "https://localhost:2000/payments/authorizations"
+      "href": "http://localhost:2000/api/payments/authorizations"
     },
     "payments:events": {
-      "href": "https://localhost:2000/payments/events"
+      "href": "http://localhost:2000/api/payments/events"
     },
     "curies": [
       {
         "name": "payments",
-        "href": "https://localhost:2000/rels/payments/{rel}",
+        "href": "http://localhost:2000/api/rels/payments/{rel}",
         "templated": true
       }
     ]
   }
-}
+};
+const authorized = {
+  "outcome": "authorized",
+  "_links": {
+    "payments:cancel": {
+      "href": "http://localhost:2000/api/payments/authorizations/cancellations/eyJrIjoiazNhYjYzMiJ9"
+    },
+    "payments:settle": {
+      "href": "http://localhost:2000/api/payments/settlements/full/eyJrIjoiazNhYjYzMiJ9"
+    },
+    "payments:partialSettle": {
+      "href": "http://localhost:2000/api/payments/settlements/partials/eyJrIjoiazNhYjYzMiJ9"
+    },
+    "payments:events": {
+      "href": "http://localhost:2000/api/payments/events/eyJrIjoiazNhYjYzMiJ9"
+    },
+    "curies": [
+      {
+        "name": "payments",
+        "href": "http://localhost:2000/api/rels/payments/{rel}",
+        "templated": true
+      }
+    ]
+  }
+};
+
+
+
 app.get('/api/payments', (req,res) => {
-  res.json({
+  res.status(201).send({
     data: payments,
-    status: 201
+
   })
 });
 
+app.post('/api/payments/authorizations', (req, res) => {
+  console.log(JSON.stringify(req.body, null, 2));
+  res.status(201).send(authorized);
+});
+
+app.post('/api/payments/settlements/full/eyJrIjoiazNhYjYzMiJ9', (req, res) => {
+  console.log(JSON.stringify(req.body, null, 2));
+  res.status(201).send({
+    "_links": {
+      "payments:refund": {
+        "href": "https://access.worldpay.com/payments/settlements/refunds/full/eyJrIjoiazNhYjYzMiJ9"
+      },
+      "payments:partialRefund": {
+        "href": "https://access.worldpay.com/payments/settlements/refunds/partials/eyJrIjoiazNhYjYzMiJ9"
+      },
+      "payments:events": {
+        "href": "https://access.worldpay.com/payments/events/eyJrIjoiazNhYjYzMiJ9"
+      },
+      "curies": [
+        {
+          "name": "payments",
+          "href": "https://access.worldpay.com/rels/payments/{rel}",
+          "templated": true
+        }
+      ]
+    }
+  });
+});
+
+// Catch all 404 errors
+app.use(function (req, res, next) {
+  console.log('error');
+  res.status(404).send({error: "Sorry can't find that!"})
+});
 
 app.listen('2000', () => {
   console.log('listening on port 20000');
