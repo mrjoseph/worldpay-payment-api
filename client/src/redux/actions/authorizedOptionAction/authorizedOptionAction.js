@@ -19,8 +19,14 @@ export const settlePayment = (uri, body) => (dispatch) => {
   dispatch(fetchData(uri, body, AUTHORIZED_OPTION_SETTLE_PAYMENT));
 };
 
-export const cancelPayment = () => {};
+export const cancelPayment = (uri, body) => (dispatch) => {
+  dispatch(fetchData(uri, body, CANCEL_PAYMENT));
+};
 
-export const partialSettlePayment = () => {};
+export const partialSettlePayment = (uri, body) => (dispatch) => {
+  dispatch(fetchData(uri, body, PARTIAL_AUTHORIZED_OPTION_SETTLE_PAYMENT));
+};
 
-export const queryPayment = () => {};
+export const queryPayment = (uri, body) => (dispatch) => {
+  dispatch(fetchData(uri, body, QUERY_PAYMENT));
+};
