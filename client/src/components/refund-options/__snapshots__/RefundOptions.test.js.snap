@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header Should render the checkout view without props 1`] = `
+<div
+  className="settled-payment-options"
+>
+  <h3>
+    Refund options
+  </h3>
+  <button
+    className="btn btn-primary"
+    type="button"
+  >
+    Refund
+  </button>
+  <button
+    className="btn btn-secondary"
+    type="button"
+  >
+    Partial refund
+  </button>
+</div>
+`;

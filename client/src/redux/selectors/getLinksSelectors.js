@@ -24,6 +24,9 @@ export const getAuthorizedSelectors = (state) => {
   if(state.authorized) {
     return {
       settle: _.get(state, 'authorized.authorized._links.payments:settle.href'),
+      cancel: _.get(state, 'authorized.authorized._links.payments:cancel.href'),
+      partialSettle: _.get(state, 'authorized.authorized._links.payments:partialSettle.href'),
+      events: _.get(state, 'authorized.authorized._links.payments:events.href'),
     }
   }
 };

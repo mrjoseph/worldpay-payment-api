@@ -1,17 +1,36 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import './authorization-successful.scss';
-import AuthorizedOptions from '../../components/authorized-options/Authorized-options';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import "./authorization-successful.scss";
+import AuthorizedOptions
+  from "../../components/authorized-options/Authorized-options";
+import RefundOptions from "../../components/refund-options/Refind-options";
 
 class AuthorizationSuccessful extends Component {
   constructor() {
     super();
     this.handleSettlePayment = this.handleSettlePayment.bind(this);
+    this.handlePartialRefund = this.handlePartialRefund.bind(this);
+    this.handleCancelPayment = this.handleCancelPayment.bind(this);
+    this.handleQueryPayment = this.handleCancelPayment.bind(this);
   }
 
   handleSettlePayment() {
-    const { settlePayment, settledLinks, authorized: { settle } } = this.props;
+    const { settlePayment, authorized: { settle } } = this.props;
       if (settle) settlePayment(settle);
+  }
+  handlePartialRefund() {
+    const { partialSettlePayment, authorized: { partialSettle } } = this.props;
+    if (partialSettle) partialSettlePayment(partialSettle);
+  }
+
+  handleCancelPayment() {
+    const { cancelPayment, authorized: { cancel } } = this.props;
+    if(cancel) cancelPayment(cancel);
+  }
+
+  handleQueryPayment() {
+    const { queryPayment, authorized: { events } } = this.props;
+    if(events) queryPayment(events);
   }
 
   render() {
@@ -27,13 +46,14 @@ class AuthorizationSuccessful extends Component {
         </p>
         <div>
           <h3>Authorization options</h3>
-          <AuthorizedOptions handleSettlePayment={this.handleSettlePayment} />
+          <AuthorizedOptions
+              handleSettlePayment={this.handleSettlePayment}
+              handlePartialRefund={this.handlePartialRefund}
+              handleCancelPayment={this.handleCancelPayment}
+              handleQueryPayment={this.handleQueryPayment}
+          />
         </div>
-        {refund && <div className="settled-payment-options">
-          <h3>Refund options</h3>
-          <button type="button" className="btn btn-primary">Refund</button>
-          <button type="button" className="btn btn-secondary">Partial refund</button>
-        </div>}
+        {refund && <RefundOptions/>}
       </div>
     );
   }
