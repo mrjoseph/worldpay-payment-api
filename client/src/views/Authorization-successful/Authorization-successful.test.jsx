@@ -10,13 +10,19 @@ const handleSettlePaymentSpy = jest.spyOn(AuthorizationSuccessful.prototype, 'ha
 describe('AuthorizationSuccessful', () => {
   const props = {
     settlePayment: () => {},
+    cancelPayment: () => {},
+    partialSettlePayment: () => {},
+    queryPayment: () => {},
     authorized: {
       settle: "http://localhost:2000/api/payments/settlements/full/eyJrIjoiazNhYjYzMiJ9"
     },
     settledLinks: {
       refund: "http://localhost:2000/api/payments/settlements/refunds/full/eyJrIjoiazNhYjYzMiJ9"
+    },
+    cancelled: {
+      cancelledLink: 'https://access.worldpay.com/payments/events/eyJrIjoiazNhYjYzMiJ9'
     }
-  }
+  };
   let component;
   let authorizedOptions;
   beforeEach(() => {

@@ -37,7 +37,6 @@ describe('Authorized payment reducer', () => {
     };
 
     const stateAfter = {
-      authorized: {
         outcome: 'authorized',
         _links: {
           'payments:cancel': {
@@ -60,7 +59,6 @@ describe('Authorized payment reducer', () => {
             },
           ],
         },
-      },
     };
 
     expect(authorizePaymentReducer(INITIAL_STATE, ACTION)).toEqual(stateAfter);

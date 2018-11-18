@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const AuthorizedOptions = ({ handleSettlePayment, handlePartialRefund, handleCancelPayment, handleQueryPayment }) => {
+const AuthorizedOptions = ({ handleSettlePayment, handlePartialSettle, handleCancelPayment, handleQueryPayment }) => {
   return(
       <div>
         <button id="settle" type="button" className="btn btn-success settle" onClick={handleSettlePayment}>Settle payment</button>
-        <button type="button" className="btn btn-secondary" onClick={handlePartialRefund}>
+        <button type="button" className="btn btn-secondary" onClick={handlePartialSettle}>
           Partially settle
         </button>
         <button type="button" className="btn btn-dark" onClick={handleCancelPayment}>Cancel</button>

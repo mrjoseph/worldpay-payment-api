@@ -10,13 +10,15 @@ import {
 } from '../../redux/actions/authorizedOptionAction/authorizedOptionAction';
 import {
   getSettledSelectors,
-  getAuthorizedSelectors
+  getAuthorizedSelectors,
+  getCancelledSelector
 } from '../../redux/selectors/getLinksSelectors';
 
 const mapStateToProps = state => {
   return {
     authorized: getAuthorizedSelectors(state),
     settledLinks: getSettledSelectors(state),
+    cancelled: getCancelledSelector(state),
   }
 };
 

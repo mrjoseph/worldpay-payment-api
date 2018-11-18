@@ -1,5 +1,10 @@
-import settlePaymentReducer from './authorizedOption';
-import { AUTHORIZED_OPTION_SETTLE_PAYMENT } from '../../actions/authorizedOptionAction/authorizedOptionAction';
+import {settlePaymentReducer} from './authorizedOption';
+import {
+  AUTHORIZED_OPTION_SETTLE_PAYMENT,
+  CANCEL_PAYMENT,
+  PARTIAL_AUTHORIZED_OPTION_SETTLE_PAYMENT,
+  QUERY_PAYMENT
+} from '../../actions/authorizedOptionAction/authorizedOptionAction';
 
 const INITIAL_STATE = {};
 describe('Authorized options', () => {
@@ -33,10 +38,8 @@ describe('Authorized options', () => {
       },
     };
     const stateAfter = {
-      authorized: {
-        _links: {
-          curies: [{ href: 'http://localhost:2000/api/rels/payments/{rel}', name: 'payments', templated: true }], 'payments:events': { href: 'http://localhost:2000/api/payments/events/eyJrIjoiazNhYjYzMiJ9' }, 'payments:partialRefund': { href: 'http://localhost:2000/api/payments/settlements/refunds/partials/eyJrIjoiazNhYjYzMiJ9' }, 'payments:refund': { href: 'http://localhost:2000/api/payments/settlements/refunds/full/eyJrIjoiazNhYjYzMiJ9' },
-        },
+      _links: {
+        curies: [{ href: 'http://localhost:2000/api/rels/payments/{rel}', name: 'payments', templated: true }], 'payments:events': { href: 'http://localhost:2000/api/payments/events/eyJrIjoiazNhYjYzMiJ9' }, 'payments:partialRefund': { href: 'http://localhost:2000/api/payments/settlements/refunds/partials/eyJrIjoiazNhYjYzMiJ9' }, 'payments:refund': { href: 'http://localhost:2000/api/payments/settlements/refunds/full/eyJrIjoiazNhYjYzMiJ9' },
       },
     };
     expect(settlePaymentReducer(INITIAL_STATE, ACTION)).toEqual(stateAfter);

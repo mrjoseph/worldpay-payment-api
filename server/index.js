@@ -68,7 +68,7 @@ app.post('/api/payments/authorizations', (req, res) => {
 });
 
 app.post('/api/payments/settlements/full/eyJrIjoiazNhYjYzMiJ9', (req, res) => {
-  console.log(JSON.stringify(req.body, null, 2));
+  console.log('settlements endpoint hit');
   res.status(201).send({
     "_links": {
       "payments:refund": {
@@ -91,6 +91,53 @@ app.post('/api/payments/settlements/full/eyJrIjoiazNhYjYzMiJ9', (req, res) => {
   });
 });
 
+
+app.post('/api/payments/settlements/partials/eyJrIjoiazNhYjYzMiJ9',(req, res) => {
+  console.log('settlements partial endpoint hit', req.body);
+  res.status(201).json({
+    "_links": {
+      "payments:refund": {
+        "href": "https://access.worldpay.com/payments/settlements/refunds/full/eyJrIjoiazNhYjYzMiJ9"
+      },
+      "payments:partialRefund": {
+        "href": "https://access.worldpay.com/payments/settlements/refunds/partials/eyJrIjoiazNhYjYzMiJ9"
+      },
+      "payments:events": {
+        "href": "https://access.worldpay.com/payments/events/eyJrIjoiazNhYjYzMiJ9"
+      },
+      "curies": [
+        {
+          "name": "payments",
+          "href": "https://access.worldpay.com/rels/payments/{rel}",
+          "templated": true
+        }
+      ]
+    }
+  })
+});
+
+app.post('/api/payments/authorizations/cancellations/eyJrIjoiazNhYjYzMiJ9',(req, res) => {
+  console.log('cancelled endpoint hit');
+  res.status(201).send({
+    "_links": {
+      "payments:events": {
+        "href": "https://access.worldpay.com/payments/events/eyJrIjoiazNhYjYzMiJ9"
+      },
+      "curies": [
+        {
+          "name": "payments",
+          "href": "https://access.worldpay.com/rels/payments/{rel}",
+          "templated": true
+        }
+      ]
+    }
+  })
+});
+
+app.post('/api/payments/events/eyJrIjoiazNhYjYzMiJ9',(req, res) => {
+  console.log('events endpoint hit');
+  res.status(201).send({ events: 'events'})
+});
 // Catch all 404 errors
 app.use(function (req, res, next) {
   console.log('error');

@@ -10,7 +10,7 @@ export const fetchData = (uri, body, action) => ({
     body: JSON.stringify(body),
     headers: {
       Accept: 'application/json',
-      'Content-Type': 'application/json',
+      'Content-Type': 'application/x-www-form-urlencoded',
     },
   }),
 });

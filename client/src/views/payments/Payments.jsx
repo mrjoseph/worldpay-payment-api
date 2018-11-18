@@ -11,8 +11,8 @@ class Payments extends Component {
   }
 
   componentDidUpdate() {
-    const { authorized, history } = this.props;
-    if (authorized.outcome === 'authorized') {
+    const { outcome, history } = this.props;
+    if (outcome === 'authorized') {
       history.push('/Authorization-successful');
     }
   }

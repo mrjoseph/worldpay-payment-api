@@ -14,19 +14,27 @@ export const getLinksSelectors = (state) => {
 export const getSettledSelectors = (state) => {
   if (state.settled) {
     return {
-      refund: _.get(state, 'settled.authorized._links.payments:refund.href'),
+      refund: _.get(state, 'settled._links.payments:refund.href'),
     };
   }
   return null;
 };
 
 export const getAuthorizedSelectors = (state) => {
-  if(state.authorized) {
+  if(state) {
     return {
-      settle: _.get(state, 'authorized.authorized._links.payments:settle.href'),
-      cancel: _.get(state, 'authorized.authorized._links.payments:cancel.href'),
-      partialSettle: _.get(state, 'authorized.authorized._links.payments:partialSettle.href'),
-      events: _.get(state, 'authorized.authorized._links.payments:events.href'),
+      settle: _.get(state, 'authorized._links.payments:settle.href'),
+      cancel: _.get(state, 'authorized._links.payments:cancel.href'),
+      partialSettle: _.get(state, 'authorized._links.payments:partialSettle.href'),
+      events: _.get(state, 'authorized._links.payments:events.href'),
     }
   }
 };
+
+export const getCancelledSelector = (state) => {
+  if(state) {
+    return {
+      cancelledLink: _.get(state, 'cancelled._links.payments:events.href'),
+    }
+  }
+}

@@ -8,12 +8,12 @@ export default function authorizePaymentReducer(state = INITIAL_STATE, action = 
     case `${AUTHORIZE_PAYMENT}.FAILED`:
       return {
         ...state,
-        authorized: action.error,
+        ...(action.error),
       };
     case `${AUTHORIZE_PAYMENT}.SUCCESS`:
       return {
         ...state,
-        authorized: action.result,
+        ...(action.result),
       };
     default:
       return state;

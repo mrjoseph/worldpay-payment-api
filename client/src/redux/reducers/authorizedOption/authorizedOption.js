@@ -1,18 +1,40 @@
-import { AUTHORIZED_OPTION_SETTLE_PAYMENT } from '../../actions/authorizedOptionAction/authorizedOptionAction';
+import {
+  AUTHORIZED_OPTION_SETTLE_PAYMENT,
+  QUERY_PAYMENT,
+  PARTIAL_AUTHORIZED_OPTION_SETTLE_PAYMENT,
+  CANCEL_PAYMENT
+} from '../../actions/authorizedOptionAction/authorizedOptionAction';
 
 const INITIAL_STATE = {};
 
-export default function settlePaymentReducer(state = INITIAL_STATE, action = {}) {
+export function settlePaymentReducer(state = INITIAL_STATE, action = {}) {
   switch (action.type) {
     case `${AUTHORIZED_OPTION_SETTLE_PAYMENT}.FAILED`:
       return {
         ...state,
-        authorized: action.error,
+          ...(action.error),
       };
     case `${AUTHORIZED_OPTION_SETTLE_PAYMENT}.SUCCESS`:
       return {
         ...state,
-        authorized: action.result,
+        ...(action.result),
+      };
+    default:
+      return state;
+  }
+}
+
+export function cancelPaymentReducer(state = INITIAL_STATE, action = {}) {
+  switch (action.type) {
+    case `${CANCEL_PAYMENT}.FAILED`:
+      return {
+        ...state,
+          ...(action.error),
+      };
+    case `${CANCEL_PAYMENT}.SUCCESS`:
+      return {
+        ...state,
+          ...(action.result),
       };
     default:
       return state;

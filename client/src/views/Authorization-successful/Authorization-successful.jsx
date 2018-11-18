@@ -9,18 +9,24 @@ class AuthorizationSuccessful extends Component {
   constructor() {
     super();
     this.handleSettlePayment = this.handleSettlePayment.bind(this);
-    this.handlePartialRefund = this.handlePartialRefund.bind(this);
+    this.handlePartialSettle = this.handlePartialSettle.bind(this);
     this.handleCancelPayment = this.handleCancelPayment.bind(this);
-    this.handleQueryPayment = this.handleCancelPayment.bind(this);
+    this.handleQueryPayment = this.handleQueryPayment.bind(this);
   }
 
   handleSettlePayment() {
     const { settlePayment, authorized: { settle } } = this.props;
       if (settle) settlePayment(settle);
   }
-  handlePartialRefund() {
+  handlePartialSettle() {
     const { partialSettlePayment, authorized: { partialSettle } } = this.props;
-    if (partialSettle) partialSettlePayment(partialSettle);
+    if (partialSettle) partialSettlePayment(partialSettle, {
+      "value": {
+        "currency": "GBP",
+        "amount": 3
+      },
+      "reference": "test123"
+    });
   }
 
   handleCancelPayment() {
@@ -32,9 +38,8 @@ class AuthorizationSuccessful extends Component {
     const { queryPayment, authorized: { events } } = this.props;
     if(events) queryPayment(events);
   }
-
   render() {
-    const { settledLinks: { refund } } = this.props;
+    const { cancelled: { cancelledLink }, settledLinks: { refund } } = this.props;
     return (
       <div className="summary-view">
         <div className="alert alert-success" role="alert">
@@ -48,12 +53,26 @@ class AuthorizationSuccessful extends Component {
           <h3>Authorization options</h3>
           <AuthorizedOptions
               handleSettlePayment={this.handleSettlePayment}
-              handlePartialRefund={this.handlePartialRefund}
+              handlePartialSettle={this.handlePartialSettle}
               handleCancelPayment={this.handleCancelPayment}
               handleQueryPayment={this.handleQueryPayment}
           />
         </div>
         {refund && <RefundOptions/>}
+        {cancelledLink &&
+        <div>
+          <div className="card">
+            <div className="card-body">
+              <h5 className="card-title">Cancel payment</h5>
+              <h6 className="card-subtitle mb-2 text-muted">Card subtitle</h6>
+              <p className="card-text">Some quick example text to build on the
+                card title and make up the bulk of the card's content.</p>
+              <a href="#" className="card-link">Cancel payment</a>
+
+            </div>
+          </div>
+        </div>
+        }
       </div>
     );
   }
