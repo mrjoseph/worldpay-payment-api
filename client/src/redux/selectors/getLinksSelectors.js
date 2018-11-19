@@ -21,20 +21,30 @@ export const getSettledSelectors = (state) => {
 };
 
 export const getAuthorizedSelectors = (state) => {
-  if(state) {
+  if (state) {
     return {
       settle: _.get(state, 'authorized._links.payments:settle.href'),
       cancel: _.get(state, 'authorized._links.payments:cancel.href'),
       partialSettle: _.get(state, 'authorized._links.payments:partialSettle.href'),
       events: _.get(state, 'authorized._links.payments:events.href'),
-    }
+    };
   }
 };
 
 export const getCancelledSelector = (state) => {
-  if(state) {
+  if (state) {
     return {
       cancelledLink: _.get(state, 'cancelled._links.payments:events.href'),
-    }
+    };
   }
-}
+};
+
+export const getPartialSettleSelectors = (state) => {
+  if (state) {
+    return {
+      partialRefund: _.get(state, 'partialSettle._links.payments:partialRefund.href'),
+      refund: _.get(state, 'partialSettle._links.payments:refund.href'),
+      events: _.get(state, 'partialSettle._links.payments:events.href'),
+    };
+  }
+};

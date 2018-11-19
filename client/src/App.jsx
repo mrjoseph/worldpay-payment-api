@@ -5,7 +5,7 @@ import store, { history } from './redux/store';
 import Header from './components/header/header';
 import Payments from './views/payments';
 import Checkout from './views/checkout/Checkout';
-import AuthorizationSuccessful from './views/Authorization-successful';
+import AuthorizationSuccessful from './views/authorization-successful';
 import './App.css';
 import content from './content.json';
 

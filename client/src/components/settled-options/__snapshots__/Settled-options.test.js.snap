@@ -4,9 +4,12 @@ exports[`Header Should render the checkout view without props 1`] = `
 <div
   className="settled-payment-options"
 >
-  <h3>
+  <h5>
     Refund options
-  </h3>
+  </h5>
+  <p>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nec sagittis velit, vitae euismod est. Suspendisse at quam vitae elit rhoncus rhoncus ut at erat. In dapibus ipsum sodales varius pretium. Suspendisse malesuada placerat accumsan. Integer pulvinar felis ullamcorper turpis sollicitudin euismod
+  </p>
   <button
     className="btn btn-primary"
     type="button"

@@ -11,7 +11,8 @@ import {
 import {
   getSettledSelectors,
   getAuthorizedSelectors,
-  getCancelledSelector
+  getCancelledSelector,
+  getPartialSettleSelectors,
 } from '../../redux/selectors/getLinksSelectors';
 
 const mapStateToProps = state => {
@@ -19,6 +20,7 @@ const mapStateToProps = state => {
     authorized: getAuthorizedSelectors(state),
     settledLinks: getSettledSelectors(state),
     cancelled: getCancelledSelector(state),
+    partial: getPartialSettleSelectors(state),
   }
 };
 

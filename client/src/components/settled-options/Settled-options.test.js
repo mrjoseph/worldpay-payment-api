@@ -1,10 +1,10 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import RefundOptions from './Refind-options';
+import SettledOptions from './Settled-options';
 
 describe('Header', () => {
   it('Should render the checkout view without props', () => {
-    const rendered = renderer.create(<RefundOptions />);
+    const rendered = renderer.create(<SettledOptions />);
     expect(rendered.toJSON()).toMatchSnapshot();
   });
 });
