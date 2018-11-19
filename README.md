@@ -31,7 +31,7 @@ yarn start
 1. Api function
 1. Add JWT to protect routes
 1. Add a nice fade out of the authorization message after 10 seconds
-1. Attach event
+1. Attach event for button that render when you click `Settle payment` `partial settle` `cancel` `View details of your payment`
 1. add environment variables for `localhost:3000`
 
 ## Questions
