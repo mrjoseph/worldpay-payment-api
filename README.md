@@ -27,7 +27,6 @@ yarn start
 
 
 ## TODOs
-### Unit tests
 1. Api function
 1. Add JWT to protect routes
 1. Add a nice fade out of the authorization message after 10 seconds
@@ -37,3 +36,7 @@ yarn start
 ## Questions
 1. Where is the payment status stored?
 1. What is the `payment:events` href?
+
+## Hindsight
+1. Consider using GraphQL
+
