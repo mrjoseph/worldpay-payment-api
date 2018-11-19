@@ -46,7 +46,11 @@ class AuthorizationSuccessful extends Component {
   }
 
   render() {
-    const { cancelled: { cancelledLink }, settledLinks: { refund }, partial: { partialRefund } } = this.props;
+    const {
+      cancelled: { cancelledLink },
+      settledLinks: { refund },
+      partial: { partialRefund },
+    } = this.props;
     return (
       <div className="summary-view">
         <div className="alert alert-success" role="alert">
@@ -79,7 +83,19 @@ class AuthorizationSuccessful extends Component {
 
 AuthorizationSuccessful.propTypes = {
   settlePayment: PropTypes.func.isRequired,
+  cancelPayment: PropTypes.func.isRequired,
+  partialSettlePayment: PropTypes.func.isRequired,
+  cancelled: PropTypes.func.isRequired,
+  settledLinks: PropTypes.shape([
+    PropTypes.sting,
+    PropTypes.object,
+  ]),
+  queryPayment: PropTypes.func.isRequired,
   authorized: PropTypes.shape([
+    PropTypes.sting,
+    PropTypes.object,
+  ]),
+  partial: PropTypes.shape([
     PropTypes.sting,
     PropTypes.object,
   ]),
@@ -87,6 +103,8 @@ AuthorizationSuccessful.propTypes = {
 
 AuthorizationSuccessful.defaultProps = {
   authorized: {},
+  settledLinks: {},
+  partial: {},
 };
 
 export default AuthorizationSuccessful;
