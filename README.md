@@ -31,7 +31,9 @@ yarn start
 1. Add JWT to protect routes
 1. Add a nice fade out of the authorization message after 10 seconds
 1. Attach event for button that render when you click `Settle payment` `partial settle` `cancel` `View details of your payment`
-1. add environment variables for `localhost:3000`
+1. Add environment variables for `localhost:3000`
+1. Render links for `partial refund` now that it returns data
+1. Render links for `View details of your payment` now that it returns data
 
 ## Questions
 1. Where is the payment status stored?
