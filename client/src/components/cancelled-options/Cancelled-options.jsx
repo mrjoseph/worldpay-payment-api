@@ -1,7 +1,7 @@
 import React from 'react';
 
 const CancelledOptions = () => (
-  <div>
+  <div className="partial-settled-payment-options">
     <div className="card">
       <div className="card-body">
         <h5 className="card-title">Cancel payment</h5>

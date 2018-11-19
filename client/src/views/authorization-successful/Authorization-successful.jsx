@@ -4,7 +4,9 @@ import './authorization-successful.scss';
 import AuthorizedOptions
   from '../../components/authorized-options/Authorized-options';
 import SettledOptions from '../../components/settled-options/Settled-options';
-import CancelledOptions from '../../components/cancelled-options/Cancelled-options';
+import CancelledOptions
+  from '../../components/cancelled-options/Cancelled-options';
+import PartialSettledOptions from '../../components/partial-settled-options/partial-settled-options';
 
 class AuthorizationSuccessful extends Component {
   constructor() {
@@ -68,10 +70,7 @@ class AuthorizationSuccessful extends Component {
         && <CancelledOptions />
         }
         {partialRefund && (
-        <div className="partial-settled-payment-options">
-          <h5 className="card-title">Partial settle payment</h5>
-          Render links for partial refund
-        </div>
+        <PartialSettledOptions />
         )}
       </div>
     );

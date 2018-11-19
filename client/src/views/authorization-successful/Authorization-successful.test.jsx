@@ -1,5 +1,5 @@
 import React from 'react';
-import { mount, shallow, configure } from 'enzyme';
+import { mount, configure } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import AuthorizationSuccessful from './Authorization-successful';
 
@@ -37,7 +37,7 @@ describe('AuthorizationSuccessful', () => {
     describe('WHEN we click the settle payment button', () => {
       it('should post settle full payment', () => {
         const button = authorizedOptions.find('#settle');
-        const settledPaymentOptions = component.find('.settled-payment-options');
+        const settledPaymentOptions = component.find('SettledOptions');
         button.simulate('click');
         expect(handleSettlePaymentSpy).toHaveBeenCalled();
         expect(settledPaymentOptions).toHaveLength(1);
@@ -46,7 +46,7 @@ describe('AuthorizationSuccessful', () => {
     describe('WHEN we click the partial settle payment button', () => {
       it('should post partial settle payment', () => {
         const button = authorizedOptions.find('#partial-settled');
-        const partialSettledPaymentOptions = component.find('.partial-settled-payment-options');
+        const partialSettledPaymentOptions = component.find('PartialSettledOptions');
         button.simulate('click');
         expect(handlePartialSettleSpy).toHaveBeenCalled();
         expect(partialSettledPaymentOptions).toHaveLength(1);

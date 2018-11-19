@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CancelledOptions Should render the breadcrumb with props 1`] = `
+<div
+  className="partial-settled-payment-options"
+>
+  <h5
+    className="card-title"
+  >
+    Partial settle payment
+  </h5>
+  Render links for partial refund
+</div>
+`;
