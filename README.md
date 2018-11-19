@@ -27,7 +27,7 @@ yarn start
 
 
 ## TODOs
-1. Api function
+1. Api function tests
 1. Add JWT to protect routes
 1. Add a nice fade out of the authorization message after 10 seconds
 1. Attach event for button that render when you click `Settle payment` `partial settle` `cancel` `View details of your payment`
@@ -38,6 +38,7 @@ yarn start
 ## Questions
 1. Where is the payment status stored?
 1. What is the `payment:events` href?
+1. When we click on a `Settle payment` link do we want to hide the authorization `successful links?` Same question also applies to `Partially settled` `Cancel` and `View details`
 
 ## Hindsight
 1. Consider using GraphQL
