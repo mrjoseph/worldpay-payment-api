@@ -1,7 +1,7 @@
 # World Pay Api test
 ## How to run this example
 This example is using Create React App for the frontend and a Express server for the api. You will need to open two terminal
-shell's and run front end in one and backend in another.
+shells and run front end in one and backend in another.
 
 ### Clone repo
 ```
@@ -11,7 +11,7 @@ cd worldpay-payment-api
 ```
 
 ### start api
-The api is hard coded on port 2000
+The api is on port 2000
 ```
 cd worldpay-payment-api/server
 yarn start
