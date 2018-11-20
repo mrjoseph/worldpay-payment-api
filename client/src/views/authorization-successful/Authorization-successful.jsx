@@ -85,7 +85,10 @@ AuthorizationSuccessful.propTypes = {
   settlePayment: PropTypes.func.isRequired,
   cancelPayment: PropTypes.func.isRequired,
   partialSettlePayment: PropTypes.func.isRequired,
-  cancelled: PropTypes.func.isRequired,
+  cancelled: PropTypes.shape([
+    PropTypes.sting,
+    PropTypes.object,
+  ]),
   settledLinks: PropTypes.shape([
     PropTypes.sting,
     PropTypes.object,

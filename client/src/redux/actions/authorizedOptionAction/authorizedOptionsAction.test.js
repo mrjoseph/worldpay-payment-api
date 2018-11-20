@@ -12,7 +12,7 @@ import {
   AUTHORIZED_OPTION_SETTLE_PAYMENT,
   CANCEL_PAYMENT,
   PARTIAL_AUTHORIZED_OPTION_SETTLE_PAYMENT,
-  QUERY_PAYMENT
+  QUERY_PAYMENT,
 } from './authorizedOptionAction';
 
 const middlewares = [thunk, createApiMiddleware(api)];
@@ -34,7 +34,7 @@ describe('Authorized Option Actions', () => {
       fetchMock.reset();
       fetchMock.restore();
     });
-    describe("When calling the AUTHORIZED_OPTION_SETTLE_PAYMENT action and everything is all good", () => {
+    describe('When calling the AUTHORIZED_OPTION_SETTLE_PAYMENT action and everything is all good', () => {
       it('should return action type AUTHORIZED_OPTION_SETTLE_PAYMENT (LOADING AND SUCCESS)', async () => {
         fetchMock.post(path, { status: 201, body: response });
         settlePayment(path, payload, AUTHORIZED_OPTION_SETTLE_PAYMENT);
@@ -48,7 +48,7 @@ describe('Authorized Option Actions', () => {
         expect(actions).toEqual(expected);
       });
 
-      describe("When calling the AUTHORIZED_OPTION_SETTLED_PAYMENT action and you're having a bad day", () => {
+      describe('When calling the AUTHORIZED_OPTION_SETTLED_PAYMENT action and you\'re having a bad day', () => {
         it('should return action type AUTHORIZED_OPTION_SETTLE_PAYMENT (LOADING AND FAILED)', async () => {
           fetchMock.post(path, { status: 404, body: response });
           settlePayment(path, payload, AUTHORIZED_OPTION_SETTLE_PAYMENT);
@@ -75,7 +75,7 @@ describe('Authorized Option Actions', () => {
       fetchMock.reset();
       fetchMock.restore();
     });
-    describe("When calling the CANCEL_PAYMENT action and everything is all good", () => {
+    describe('When calling the CANCEL_PAYMENT action and everything is all good', () => {
       it('should return action type CANCEL_PAYMENT (LOADING AND SUCCESS)', async () => {
         fetchMock.post(path, { status: 201, body: response });
         cancelPayment(path, payload, CANCEL_PAYMENT);
@@ -89,7 +89,7 @@ describe('Authorized Option Actions', () => {
         expect(actions).toEqual(expected);
       });
 
-      describe("When calling the CANCEL_PAYMENT action and you're having a bad day", () => {
+      describe('When calling the CANCEL_PAYMENT action and you\'re having a bad day', () => {
         it('should return action type CANCEL_PAYMENT (LOADING AND FAILED)', async () => {
           fetchMock.post(path, { status: 404, body: response });
           cancelPayment(path, payload, CANCEL_PAYMENT);
@@ -116,7 +116,7 @@ describe('Authorized Option Actions', () => {
       fetchMock.reset();
       fetchMock.restore();
     });
-    describe("When calling the QUERY_PAYMENT action and everything is all good", () => {
+    describe('When calling the QUERY_PAYMENT action and everything is all good', () => {
       it('should return action type QUERY_PAYMENT (LOADING AND SUCCESS)', async () => {
         fetchMock.post(path, { status: 201, body: response });
         partialSettlePayment(path, payload);
@@ -130,7 +130,7 @@ describe('Authorized Option Actions', () => {
         expect(actions).toEqual(expected);
       });
 
-      describe("When calling the PARTIAL_AUTHORIZED_OPTION_SETTLE_PAYMENT action and you're having a bad day", () => {
+      describe('When calling the PARTIAL_AUTHORIZED_OPTION_SETTLE_PAYMENT action and you\'re having a bad day', () => {
         it('should return action type PARTIAL_AUTHORIZED_OPTION_SETTLE_PAYMENT (LOADING AND FAILED)', async () => {
           fetchMock.post(path, { status: 404, body: response });
           partialSettlePayment(path, payload);
@@ -157,7 +157,7 @@ describe('Authorized Option Actions', () => {
       fetchMock.reset();
       fetchMock.restore();
     });
-    describe("When calling the QUERY_PAYMENT action and everything is all good", () => {
+    describe('When calling the QUERY_PAYMENT action and everything is all good', () => {
       it('should return action type QUERY_PAYMENT (LOADING AND SUCCESS)', async () => {
         fetchMock.post(path, { status: 201, body: response });
         queryPayment(path, payload, QUERY_PAYMENT);
@@ -171,7 +171,7 @@ describe('Authorized Option Actions', () => {
         expect(actions).toEqual(expected);
       });
 
-      describe("When calling the AUTHORIZED_OPTION_SETTLED_PAYMENT action and you're having a bad day", () => {
+      describe('When calling the AUTHORIZED_OPTION_SETTLED_PAYMENT action and you\'re having a bad day', () => {
         it('should return action type AUTHORIZED_OPTION_SETTLE_PAYMENT (LOADING AND FAILED)', async () => {
           fetchMock.post(path, { status: 404, body: response });
           queryPayment(path, payload, QUERY_PAYMENT);
